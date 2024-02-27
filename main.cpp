@@ -37,15 +37,12 @@
 using namespace std;
 
 int main() {
-  cout << "Welcome!" << endl;
+  cout << "Welcome to Rock Paper Scissors!" << endl;
+
   Player player1("temp");
-  try {
-    NewPlayerMenu(player1);
-  } catch (runtime_error) {
-    cout << "Wrong File Key" << endl;
-    return -1;
-  }
   Player computer("Computer");
+
+  NewPlayerMenu(player1);
   startMenu(player1, computer);
 
   cout << "Save Player? Press 1 for yes." << endl;

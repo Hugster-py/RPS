@@ -51,23 +51,23 @@ void GameSequence(Player &player1, Player &computer) {
 
         if (score == 0) {
             ScoreTracker.SetCompScore();
-            cout << "Computer wins round!" << endl << endl;
+            cout << "Computer wins round!" << endl;
         } else if (score == 1) {
             ScoreTracker.SetPlayerScore();
-            cout << "Player wins round!" << endl << endl;
+            cout << "Player wins round!" << endl;
         }
 
         if (ScoreTracker.GetPlayerScore() == (roundsNum + 1) / 2) {
             player1.SetWins();
             computer.SetLosses();
-            cout << "Player wins game!" << endl;
+            cout << "Player wins game!" << endl<<endl;
             break;
         }
 
         if (ScoreTracker.GetCompScore() == (roundsNum + 1) / 2) {
             player1.SetLosses();
             computer.SetWins();
-            cout << "Computer wins game!" << endl;
+            cout << "Computer wins game!" << endl<<endl;
             break;
         }
 

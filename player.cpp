@@ -18,7 +18,6 @@ Player::Player(string name) {
     Paper = 0;
     Scissor = 0;
     win_loss_ratio = 0.0;
-    ties = 0;
 }
 
 void Player::printAllStats() {
@@ -27,7 +26,6 @@ void Player::printAllStats() {
     cout << "Total Wins: " << wins << endl;
     cout << "Total Losses: " << losses << endl;
     cout << "Win/Loss Ratio: " << setprecision(2) << win_loss_ratio << endl;
-    //  cout << "Total Ties: " << ties << endl;
     cout << "Times Chose Rock: " << Rock << endl;
     cout << "Times Chose Paper: " << Paper << endl;
     cout << "Times Chose Scissor: " << Scissor << endl;
@@ -52,8 +50,7 @@ void Player::PrintAllStatsFile(ofstream &outFS) {
     outFS << Scissor << endl;
 }
 
-//FIX ME!
+
 void Player::Win_Loss_R() {
     win_loss_ratio = (1.0 * wins) / (1.0 * losses);
 }
-//FIX ME!

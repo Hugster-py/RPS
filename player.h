@@ -21,9 +21,7 @@ public:
   int GetWins() { return wins; }
   void SetLosses() { losses++; }
   int GetLosses() { return losses; }
-  // FIXME
   void Win_Loss_R();
-  // FIXME^
   void SetRock() { Rock++; }
   void SetPaper() { Paper++; }
   void SetScissor() { Scissor++; }

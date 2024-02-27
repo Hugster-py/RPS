@@ -52,8 +52,7 @@ void Player::PrintAllStatsFile(ofstream &outFS) {
     outFS << Scissor << endl;
 }
 
-//FIX ME!
+
 void Player::Win_Loss_R() {
     win_loss_ratio = (1.0 * wins) / (1.0 * losses);
 }
-//FIX ME!

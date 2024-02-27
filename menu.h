@@ -13,7 +13,10 @@
 #include <string>
 #include <vector>
 
+//FIX ME
 void NewPlayerMenu(Player &player1);
+//
+
 void startMenu(Player &player1, Player &computer);
 void SaveCharacter(Player &player1);
 

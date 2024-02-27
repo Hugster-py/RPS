@@ -12,6 +12,8 @@
 //  CUSTOMIZABLE COMPUTER
 //  RETYPE NEW PLAYER MENU
 //  REDO MENUS COMPLETELY
+//      Plans for menus, turn the output into an int. Get rid of the nesting that I have now as it has been hard to work
+//      on and change around.
 
 // FIX ME:
 //  PRINT STATEMENTS FOR BATTLE SEQUENCE

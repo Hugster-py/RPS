@@ -25,12 +25,7 @@ public:
   void SetRock() { Rock++; }
   void SetPaper() { Paper++; }
   void SetScissor() { Scissor++; }
-  int GetRock() { return Rock; }
-  int GetPaper() { return Paper; }
-  int GetScissor() { return Scissor; }
   void printAllStats();
-  void SetTie() { ties++; }
-  int GetTie() { return ties; }
   void SetStats(ifstream &inFS);
   void PrintAllStatsFile(ofstream &outFS);
 
@@ -42,7 +37,6 @@ private:
   int Rock;
   int Paper;
   int Scissor;
-  int ties;
 };
 
 #endif

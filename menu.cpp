@@ -36,25 +36,33 @@ void NewPlayerMenu(Player &player1) {
         string name;
         cin>>name;
         player1.SetName(name);
+        cout<<endl;
     }
-    if(choice == 2){
+    else if(choice == 2){
         cout<<"You chose to upload a previous save!"<<endl;
         cout<<"Please paste full path of save file!"<<endl;
         cout<<"File Name: ";
         string filename;
         cin>>filename;
         inFS.open(filename);
+        int b = 1;
         if(!inFS.is_open()){
             cout<<"Error: File Not Found. Try again."<<endl;
+            cout<<endl;
+            choice = 0;
+            NewPlayerMenu(player1);
+            b = 0;
         }
         cout<<endl;
-        player1.SetStats(inFS);
-        cout<<"1. Show Stats of Previous Save"<<endl;
-        cout<<"2. Continue"<<endl;
-        cout<<"Choice: ";
-        cin>>choice;
-        if(choice == 1){
-            player1.printAllStats();
+        if(b == 1) {
+            player1.SetStats(inFS);
+            cout << "1. Show Stats of Previous Save" << endl;
+            cout << "2. Continue" << endl;
+            cout << "Choice: ";
+            cin >> choice;
+            if (choice == 1) {
+                player1.printAllStats();
+            }
         }
     }
 }

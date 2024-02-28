@@ -76,7 +76,7 @@ void NewPlayerMenu(Player &player1) {
 void startMenu(Player &player1, Player &computer) {
     int choice;
 
-    cout << "MENU:" << endl;
+    cout << "MAIN MENU:" << endl;
     cout << "1. Start New Game" << endl;
     cout << "2. Quit" << endl;
     cin >> choice;
@@ -85,6 +85,7 @@ void startMenu(Player &player1, Player &computer) {
     if (choice == 2) {
         return;
     }
+
     while (choice != 3) {
         if (choice == 1) {
             GameSequence(player1, computer);
@@ -105,6 +106,7 @@ void startMenu(Player &player1, Player &computer) {
         cout << "3. Quit" << endl;
         cout << "Menu Choice: ";
         cin >> choice;
+        cout<<endl;
     }
 }
 

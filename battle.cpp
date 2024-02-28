@@ -21,13 +21,14 @@ void GameSequence(Player &player1, Player &computer) {
 
     cout << "Enter (Odd) Amount of Rounds: ";
     cin >> roundsNum;
+    cout<<endl;
     if (roundsNum % 2 == 0) {
         cout << "Choose odd number!" << endl;
         cout << "Enter Amount of Rounds: ";
         cin >> roundsNum;
     }
+    //fix this looping
 
-    // TODO: Clean up spacing
     while (ScoreTracker.GetPlayerScore() != (roundsNum + 1) / 2 ||
            ScoreTracker.GetCompScore() != (roundsNum + 1) / 2) {
         score = 0;

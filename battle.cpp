@@ -4,7 +4,6 @@
 #include "player.h"
 #include <iostream>
 #include <string>
-#include <vector>
 #include <cstdlib>
 #include <synchapi.h>
 #include "battle.h"

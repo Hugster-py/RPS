@@ -55,3 +55,12 @@ void Player::PrintAllStatsFile(ofstream &outFS) {
 void Player::Win_Loss_R() {
     win_loss_ratio = (1.0 * wins) / (1.0 * losses);
 }
+
+void Player::ClearStats() {
+    wins = 0;
+    losses = 0;
+    Rock = 0;
+    Paper = 0;
+    Scissor = 0;
+    win_loss_ratio = 0.0;
+}

@@ -26,6 +26,7 @@ public:
   void printAllStats();
   void SetStats(ifstream &inFS);
   void PrintAllStatsFile(ofstream &outFS);
+  void ClearStats();
 
 private:
   string name;

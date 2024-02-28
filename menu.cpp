@@ -86,7 +86,7 @@ void startMenu(Player &player1, Player &computer) {
         return;
     }
 
-    while (choice != 3) {
+    while (choice != 0) {
         if (choice == 1) {
             GameSequence(player1, computer);
         }
@@ -99,17 +99,69 @@ void startMenu(Player &player1, Player &computer) {
                 computer.printAllStats();
             }
         }
-
+        if(choice == 3){
+            PlayerSetting(player1, computer);
+        }
+        cout<<endl;
         cout << "MENU:" << endl;
         cout << "1. New Game" << endl;
         cout << "2. Show Current Stats" << endl;
-        cout << "3. Quit" << endl;
+        cout << "3. Player Settings" <<endl;
+        cout << "0. Quit" << endl;
         cout << "Menu Choice: ";
         cin >> choice;
         cout<<endl;
     }
 }
 
+
+void PlayerSetting(Player &player1, Player &computer){
+    string newName;
+    int choice;
+    char confirm;
+
+    cout<<"Player Settings Menu"<<endl;
+    cout<<"1. Change Player Name"<<endl;
+    cout<<"2. Clear All Player Stats"<<endl;
+    cout<<"3. Change Computer Name"<<endl;
+    cout<<"0. Back to Main Menu"<<endl;
+    cout<<"Choice: ";
+    cin>>choice;
+    cout<<endl;
+
+    if(choice == 1){
+        cout<<"You Chose Change Player Name:"<<endl;
+        cout<<"Please input new name:";
+        cin>>newName;
+        cout<<endl;
+        player1.SetName(newName);
+    }
+    if(choice == 2){
+        cout<<"You Chose to Clear All Stats:"<<endl;
+        cout<<"Confirm? Y for Yes"<<endl;
+        cin>>confirm;
+
+        if(confirm == 'N' || confirm == 'n'){
+            return;
+        }
+        else{
+            cout<<"Clearing "<<player1.GetName()<<" Stats"<<endl;
+            player1.ClearStats();
+            cout<<"..."<<endl;
+            Sleep(500);
+            cout<<"Stats cleared!"<<endl;
+            return;
+        }
+
+    }
+    if(choice == 3){
+        cout<<"You Chose Change Computer Name:"<<endl;
+        cout<<"Please input new name:";
+        cin>>newName;
+        cout<<endl;
+        computer.SetName(newName);
+    }
+}
 
 void SaveCharacter(Player &player1) {
     int choice;

@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <synchapi.h>
 
 using namespace std;
 
@@ -16,39 +17,43 @@ void GameSequence(Player &player1, Player &computer) {
     int score;
     int roundsNum;
     int reverseCount = 0;
+    int choice;
     History ScoreTracker;
     ScoreTracker = History();
-
+    cout<<endl;
     cout << "Enter (Odd) Amount of Rounds: ";
     cin >> roundsNum;
-    cout<<endl;
     if (roundsNum % 2 == 0) {
         cout << "Choose odd number!" << endl;
         cout << "Enter Amount of Rounds: ";
         cin >> roundsNum;
     }
-    //fix this looping
+    cout<<endl;
+    Sleep(250);
+    //FIXME looping
 
     while (ScoreTracker.GetPlayerScore() != (roundsNum + 1) / 2 ||
            ScoreTracker.GetCompScore() != (roundsNum + 1) / 2) {
-        score = 0;
+
+        //Round Menu
         cout << "Round " << reverseCount + 1 << endl;
-        int choice;
         cout << "1. Rock" << endl;
         cout << "2. Paper" << endl;
         cout << "3. Scissors" << endl;
         cout << "0. Quit" << endl;
-        cout << "Choice: ";
+        cout << "Choice: "<<endl;
         cin >> choice;
         if (choice < 0 || choice > 3) {
             cout << "Invalid. Try again: ";
             cin >> choice;
         }
+        //user quits
         if (choice == 0) {
             break;
         } else {
             score = Battle(player1, choice, computer);
         }
+
 
         if (score == 0) {
             ScoreTracker.SetCompScore();
@@ -57,33 +62,43 @@ void GameSequence(Player &player1, Player &computer) {
             ScoreTracker.SetPlayerScore();
             cout << "Player wins round!" << endl;
         }
+        else{
+            cout << "It's a tie!" << endl;
+        }
 
+        //overall win monitoring
         if (ScoreTracker.GetPlayerScore() == (roundsNum + 1) / 2) {
             player1.SetWins(0);
             computer.SetLosses(0);
-            cout << "Player wins game!" << endl<<endl;
+            cout<<endl;
+            cout << "Player wins game!" << endl;
+            Sleep(1000);
             break;
         }
-
         if (ScoreTracker.GetCompScore() == (roundsNum + 1) / 2) {
             player1.SetLosses(0);
             computer.SetWins(0);
-            cout << "Computer wins game!" << endl<<endl;
+            cout<<endl;
+            cout << "Computer wins game!" << endl;
+            Sleep(1000);
             break;
         }
 
-        cout << "Player - " << ScoreTracker.GetPlayerScore() << " | Computer - "
+        Sleep(750);
+        cout<<endl;
+        //win stats to track through the game
+        cout << player1.GetName()<<" - " << ScoreTracker.GetPlayerScore() << " | "<<computer.GetName()<<" - "
              << ScoreTracker.GetCompScore() << endl;
 
         reverseCount++;
     }
-    ScoreTracker = {};
 }
 
 
 // rock = 1 || paper = 2 || scissor = 3
 int Battle(Player &player1, int choice, Player &computer) {
-    int CompWin = 7;
+
+    //random function
     int ComputerChoice =  1+rand()%9;
     if(ComputerChoice <=3 ){
         ComputerChoice = 1;
@@ -95,6 +110,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         ComputerChoice = 3;
     }
 
+    //the long list of print statements:
     // player rock - comp paper
     if (choice == 1 && ComputerChoice == 2) {
         // comp wins
@@ -102,7 +118,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetPaper();
         cout << player1.GetName() << " chose Rock!" << endl;
         cout << "The Computer chose Paper!" << endl;
-        CompWin = 1;
+        return 1;
     }
     // player rock - comp scissors
     if (choice == 1 && ComputerChoice == 3) {
@@ -111,7 +127,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetScissor();
         cout << player1.GetName() << " chose Rock!" << endl;
         cout << "The Computer chose Scissors!" << endl;
-        CompWin = 0;
+        return 0;
     }
     //player rock - comp rock
     if (choice == 1 && ComputerChoice == 1) {
@@ -120,7 +136,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetRock();
         cout << player1.GetName() << " chose Rock!" << endl;
         cout << "The Computer chose Rock!" << endl;
-        CompWin = 2;
+        return 2;
     }
     // player paper - comp rock
     if (choice == 2 && ComputerChoice == 1) {
@@ -129,7 +145,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetRock();
         cout << player1.GetName() << " chose Paper!" << endl;
         cout << "The Computer chose Rock!" << endl;
-        CompWin = 0;
+        return 0;
     }
     // player paper - comp scissors
     if (choice == 2 && ComputerChoice == 3) {
@@ -138,7 +154,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetScissor();
         cout << player1.GetName() << " chose Paper!" << endl;
         cout << "The Computer chose Scissors!" << endl;
-        CompWin = 1;
+        return 1;
     }
     // player paper - comp paper
     if (choice == 2 && ComputerChoice == 2) {
@@ -147,7 +163,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetPaper();
         cout << player1.GetName() << " chose Paper!" << endl;
         cout << "The Computer chose Paper!" << endl;
-        CompWin = 2;
+        return 2;
     }
     // player scissor - comp rock
     if (choice == 3 && ComputerChoice == 1) {
@@ -156,7 +172,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetRock();
         cout << player1.GetName() << " chose Scissors!" << endl;
         cout << "The Computer chose Rock!" << endl;
-        CompWin = 1;
+        return 1;
     }
     // player scissors - comp paper
     if (choice == 3 && ComputerChoice == 2) {
@@ -165,7 +181,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetPaper();
         cout << player1.GetName() << " chose Scissors!" << endl;
         cout << "The Computer chose Paper!" << endl;
-        CompWin = 0;
+        return 0;
     }
     // player scissors - comp scissors
     if (choice == 3 && ComputerChoice == 3) {
@@ -173,18 +189,6 @@ int Battle(Player &player1, int choice, Player &computer) {
         computer.SetScissor();
         cout << player1.GetName() << " chose Scissors!" << endl;
         cout << "The Computer chose Scissors!" << endl;
-        CompWin = 2;
-    }
-
-    // compWin = 1 then update stats accordingly (Computer has won)
-    if (CompWin == 1) {
-        return 1;
-    } else if (CompWin == 0) {
-        return 0;
-    } else {
-        cout << "It's a tie!" << endl;
-        // computer.SetTie();
-        // player1.SetTie(); WILL BE USED WHEN TRACKING INDIVIDUAL STATS
         return 2;
     }
 }

@@ -5,7 +5,6 @@
 #include "player.h"
 #include <fstream>
 #include <iostream>
-#include <stdexcept>
 #include <string>
 #include <synchapi.h>
 #include "menu.h"

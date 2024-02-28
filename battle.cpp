@@ -28,7 +28,7 @@ void GameSequence(Player &player1, Player &computer) {
     }
     cout<<endl;
     Sleep(250);
-    //FIXME looping
+
 
     while (ScoreTracker.GetPlayerScore() != (roundsNum + 1) / 2 ||
            ScoreTracker.GetCompScore() != (roundsNum + 1) / 2) {

@@ -1,6 +1,5 @@
-//
-// Created by chase on 2/25/2024.
-//
+// Created by Chase Hughes Feb
+// @Copyright CHughes 2024
 
 #include <fstream>
 #include <iomanip>

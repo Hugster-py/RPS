@@ -18,16 +18,11 @@ public:
   void SetName(string name) { this->name = name; }
   string GetName() { return name; }
   void SetWins(double d) { wins++; }
-  int GetWins() { return wins; }
   void SetLosses(int i) { losses++; }
-  int GetLosses() { return losses; }
   void Win_Loss_R();
   void SetRock() { Rock++; }
   void SetPaper() { Paper++; }
   void SetScissor() { Scissor++; }
-  void SetRock(int temp) { Rock = temp; }
-  void SetPaper(int temp) { Paper = temp; }
-  void SetScissor(int temp) { Scissor = temp; }
   void printAllStats();
   void SetStats(ifstream &inFS);
   void PrintAllStatsFile(ofstream &outFS);

@@ -7,10 +7,9 @@
 #include <vector>
 #include <cstdlib>
 #include <synchapi.h>
+#include "battle.h"
 
 using namespace std;
-
-#include "battle.h"
 
 // 1 - rock, 2 - paper, 3 - scissors, 0 - quit
 void GameSequence(Player &player1, Player &computer) {

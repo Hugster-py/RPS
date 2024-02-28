@@ -14,12 +14,13 @@ using namespace std;
 
 void NewPlayerMenu(Player &player1) {
     ifstream inFS;
-    int choice;
+    int choice = 0;
     while(choice != 1 || choice != 2) {
         cout << "1. Create New Player" << endl;
         cout << "2. Upload Previous Player" << endl;
         cout<<"Choice: ";
         cin>>choice;
+        cout<<endl;
         if(choice == 1 || choice ==2){
             break;
         }
@@ -33,22 +34,29 @@ void NewPlayerMenu(Player &player1) {
         cout<<"You chose to create a new player!"<<endl;
         cout<<"Please enter username: ";
         string name;
+        cin>>name;
         player1.SetName(name);
     }
     if(choice == 2){
         cout<<"You chose to upload a previous save!"<<endl;
-        cout<<"Please input name of file (excluding .txt)"<<endl;
+        cout<<"Please paste full path of save file!"<<endl;
         cout<<"File Name: ";
         string filename;
         cin>>filename;
-        filename = filename + ".txt";
         inFS.open(filename);
         if(!inFS.is_open()){
-            //bad file try again
+            cout<<"Error: File Not Found. Try again."<<endl;
+        }
+        cout<<endl;
+        player1.SetStats(inFS);
+        cout<<"1. Show Stats of Previous Save"<<endl;
+        cout<<"2. Continue"<<endl;
+        cout<<"Choice: ";
+        cin>>choice;
+        if(choice == 1){
+            player1.printAllStats();
         }
     }
-
-
 }
 
 

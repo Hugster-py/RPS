@@ -8,12 +8,12 @@
 //  MORE IN DEPTH STATS (TOT ROUNDS WON, TOT ROUNDS LOST, ROCK WINS, ROCK LOSSES, TIES, ETC.
 
 // TO DO:
-//  ADD IN OTHER THROW STATEMENTS IN MENUS
 //  CUSTOMIZABLE COMPUTER
-//  RETYPE NEW PLAYER MENU
 //  REDO MENUS COMPLETELY
 //      Plans for menus, turn the output into an int. Get rid of the nesting that I have now as it has been hard to work
 //      on and change around.
+//  MOVE LAST SAVE PLAYER TO MENU FUNCTION
+//  ABILITY TO RENAME CHARACTER MID-GAME
 
 // FIX ME:
 //  PRINT STATEMENTS FOR BATTLE SEQUENCE
@@ -23,8 +23,8 @@
 //      NOTICED THAT IF COMP WINS 2 TIMES IN ROW FOR PLAYER PAPER.
 //      SAME THING FOR PLAYER SCISSORS ]
 //   FIX MENU LOOPING
-//      NUKE NEW PLAYER MENU AND REMAKE. NOT WORKING CORRECTLY.
-//          ESPECIALLY THE NEW PLAYER MENU.
+//          MAIN MENU
+//          SAVE MENU
 //   IF ERROR LOADING FILE, TRY AGAIN
 //   LOOPING TO MAKE SURE CHARACTER NAME IS SET
 
@@ -45,6 +45,7 @@ int main() {
   NewPlayerMenu(player1);
   startMenu(player1, computer);
 
+  //move to menu function
   cout << "Save Player? Press 1 for yes." << endl;
   cout << "Choice: ";
   int choice;
@@ -52,6 +53,7 @@ int main() {
   if (choice == 1) {
     SaveCharacter(player1);
   }
+  cout<<endl;
 
   cout << "Thanks for playing!" << endl;
 

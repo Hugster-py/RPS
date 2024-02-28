@@ -31,20 +31,21 @@ void Player::printAllStats() {
     cout << "Times Chose Scissor: " << Scissor << endl;
 }
 
+//you have to do the actual FULL path to the file.
 void Player::SetStats(ifstream &inFS) {
     inFS >> name;
     inFS >> wins;
     inFS >> losses;
-    inFS >> win_loss_ratio;
+    Win_Loss_R();
     inFS >> Rock;
     inFS >> Paper;
     inFS >> Scissor;
 }
+
 void Player::PrintAllStatsFile(ofstream &outFS) {
     outFS << name << endl;
     outFS << wins << endl;
     outFS << losses << endl;
-    outFS << win_loss_ratio << endl;
     outFS << Rock << endl;
     outFS << Paper << endl;
     outFS << Scissor << endl;

@@ -12,12 +12,11 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <synchapi.h>
 
-//FIX ME
 void NewPlayerMenu(Player &player1);
-//
-
 void startMenu(Player &player1, Player &computer);
 void SaveCharacter(Player &player1);
+void PlayerSetting(Player &player1, Player &computer);
 
 #endif

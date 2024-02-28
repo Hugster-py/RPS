@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <synchapi.h>
 #include "menu.h"
 
 using namespace std;
@@ -36,25 +37,37 @@ void NewPlayerMenu(Player &player1) {
         string name;
         cin>>name;
         player1.SetName(name);
+        cout<<endl;
     }
-    if(choice == 2){
+    else if(choice == 2){
         cout<<"You chose to upload a previous save!"<<endl;
         cout<<"Please paste full path of save file!"<<endl;
         cout<<"File Name: ";
         string filename;
         cin>>filename;
         inFS.open(filename);
+        int b = 1;
         if(!inFS.is_open()){
             cout<<"Error: File Not Found. Try again."<<endl;
+            cout<<endl;
+            choice = 0;
+            NewPlayerMenu(player1);
+            b = 0;
         }
         cout<<endl;
-        player1.SetStats(inFS);
-        cout<<"1. Show Stats of Previous Save"<<endl;
-        cout<<"2. Continue"<<endl;
-        cout<<"Choice: ";
-        cin>>choice;
-        if(choice == 1){
-            player1.printAllStats();
+        cout<<"Uploading..."<<endl;
+        Sleep(500);
+        if(b == 1) {
+            cout<<"Success!"<<endl;
+            player1.SetStats(inFS);
+            cout << "1. Show Stats of Previous Save" << endl;
+            cout << "2. Continue" << endl;
+            cout << "Choice: ";
+            cin >> choice;
+            if (choice == 1) {
+                player1.printAllStats();
+                cout<<endl;
+            }
         }
     }
 }
@@ -63,7 +76,7 @@ void NewPlayerMenu(Player &player1) {
 void startMenu(Player &player1, Player &computer) {
     int choice;
 
-    cout << "MENU:" << endl;
+    cout << "MAIN MENU:" << endl;
     cout << "1. Start New Game" << endl;
     cout << "2. Quit" << endl;
     cin >> choice;
@@ -72,7 +85,8 @@ void startMenu(Player &player1, Player &computer) {
     if (choice == 2) {
         return;
     }
-    while (choice != 3) {
+
+    while (choice != 0) {
         if (choice == 1) {
             GameSequence(player1, computer);
         }
@@ -85,21 +99,85 @@ void startMenu(Player &player1, Player &computer) {
                 computer.printAllStats();
             }
         }
-
+        if(choice == 3){
+            PlayerSetting(player1, computer);
+        }
+        cout<<endl;
         cout << "MENU:" << endl;
         cout << "1. New Game" << endl;
         cout << "2. Show Current Stats" << endl;
-        cout << "3. Quit" << endl;
+        cout << "3. Player Settings" <<endl;
+        cout << "0. Quit" << endl;
         cout << "Menu Choice: ";
         cin >> choice;
+        cout<<endl;
     }
 }
 
 
+void PlayerSetting(Player &player1, Player &computer){
+    string newName;
+    int choice;
+    char confirm;
+
+    cout<<"Player Settings Menu"<<endl;
+    cout<<"1. Change Player Name"<<endl;
+    cout<<"2. Clear All Player Stats"<<endl;
+    cout<<"3. Change Computer Name"<<endl;
+    cout<<"0. Back to Main Menu"<<endl;
+    cout<<"Choice: ";
+    cin>>choice;
+    cout<<endl;
+
+    if(choice == 1){
+        cout<<"You Chose Change Player Name:"<<endl;
+        cout<<"Please input new name:";
+        cin>>newName;
+        cout<<endl;
+        player1.SetName(newName);
+    }
+    if(choice == 2){
+        cout<<"You Chose to Clear All Stats:"<<endl;
+        cout<<"Confirm? Y for Yes"<<endl;
+        cin>>confirm;
+
+        if(confirm == 'N' || confirm == 'n'){
+            return;
+        }
+        else{
+            cout<<"Clearing "<<player1.GetName()<<" Stats"<<endl;
+            player1.ClearStats();
+            cout<<"..."<<endl;
+            Sleep(500);
+            cout<<"Stats cleared!"<<endl;
+            return;
+        }
+
+    }
+    if(choice == 3){
+        cout<<"You Chose Change Computer Name:"<<endl;
+        cout<<"Please input new name:";
+        cin>>newName;
+        cout<<endl;
+        computer.SetName(newName);
+    }
+}
+
 void SaveCharacter(Player &player1) {
+    int choice;
     ofstream outFS;
-    string filename = player1.GetName() + ".txt";
-    outFS.open(filename);
-    outFS << "11011011-RPS" << endl;
-    player1.PrintAllStatsFile(outFS);
+
+    cout << "Save Player? Press 1 for yes." << endl;
+    cout << "Choice: ";
+    cin >> choice;
+    cout<<endl;
+    if (choice == 1) {
+        cout<<"Saving..."<<endl;
+        Sleep(500);
+        string filename = player1.GetName() + ".txt";
+        outFS.open(filename);
+        outFS << "11011011-RPS" << endl;
+        player1.PrintAllStatsFile(outFS);
+        cout<<"Character Saved!"<<endl;
+    }
 }

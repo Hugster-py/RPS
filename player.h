@@ -17,8 +17,8 @@ public:
   Player(string name);
   void SetName(string name) { this->name = name; }
   string GetName() { return name; }
-  void SetWins(double d) { wins++; }
-  void SetLosses(int i) { losses++; }
+  void SetWins() { wins++; }
+  void SetLosses() { losses++; }
   void Win_Loss_R();
   void SetRock() { Rock++; }
   void SetPaper() { Paper++; }

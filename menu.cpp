@@ -11,69 +11,54 @@
 
 using namespace std;
 
-//NUKE AND FIX 
+
 void NewPlayerMenu(Player &player1) {
     ifstream inFS;
-    int b = 0;
-  int choice;
-  try{
-    cout << "Player Menu:" << endl;
-    cout << "1. Create New Player" << endl;
-    cout << "2. Load Save File" << endl;
-    cout << "Choice: ";
-    cin >> choice;
-    while (b == 0) {
-      if(!isdigit(choice)){
-        throw runtime_error("Wrong choice");
-      }
-        if (choice == 1) {
-            b = 1;
-            cout << "Create New Player!" << endl;
-            cout << "Set Player Username: ";
-            string name;
-            cin >> name;
-            player1.SetName(name);
-            return;
-        } else if (choice == 2) {
-            b = 1;
-            cout << "Type in name of the save file: ";
-            string filename;
-            cin >> filename;
-            filename = filename + ".txt";
-            inFS.open(filename);
-            if (!inFS.is_open()) {
-                cout << "Error: Could not open file." << endl;
-            } else {
-                string title;
-                inFS >> title;
-                if (title != "11011011-RPS") {
-                    throw runtime_error("Wrong Save File Key");
-                }
-                player1.SetStats(inFS);
-                inFS.close();
-                cout << "Loaded:" << endl;
-                player1.printAllStats();
-                return;
+    int choice = 0;
+    while(choice != 1 || choice != 2) {
+        cout << "1. Create New Player" << endl;
+        cout << "2. Upload Previous Player" << endl;
+        cout<<"Choice: ";
+        cin>>choice;
+        cout<<endl;
+        if(choice == 1 || choice ==2){
+            break;
+        }
+        if(choice != 1){
+            if(choice !=2){
+                cout<<"Invalid Choice. Try Again."<<endl;
             }
-        } else {
-            choice = {};
-            cout << "Please try again, invalid choice." << endl;
-            b = 0;
-            cout << "Player Menu:" << endl;
-            cout << "1. Create New Player" << endl;
-            cout << "2. Load Save File" << endl;
-            cout << "Choice: ";
-            cin >> choice;
-          }
+        }
+    }
+    if(choice == 1){
+        cout<<"You chose to create a new player!"<<endl;
+        cout<<"Please enter username: ";
+        string name;
+        cin>>name;
+        player1.SetName(name);
+    }
+    if(choice == 2){
+        cout<<"You chose to upload a previous save!"<<endl;
+        cout<<"Please paste full path of save file!"<<endl;
+        cout<<"File Name: ";
+        string filename;
+        cin>>filename;
+        inFS.open(filename);
+        if(!inFS.is_open()){
+            cout<<"Error: File Not Found. Try again."<<endl;
+        }
+        cout<<endl;
+        player1.SetStats(inFS);
+        cout<<"1. Show Stats of Previous Save"<<endl;
+        cout<<"2. Continue"<<endl;
+        cout<<"Choice: ";
+        cin>>choice;
+        if(choice == 1){
+            player1.printAllStats();
+        }
+    }
+}
 
-    }
-}
-    catch(runtime_error){
-      cout<<"Runtime Error: Input Digit!"<<endl;
-      b=1;
-    }
-}
-//NUKE AND FIX ^^ 
 
 void startMenu(Player &player1, Player &computer) {
     int choice;

@@ -1,6 +1,7 @@
-//
-// Created by chase on 2/25/2024.
-//
+// Created by Chase Hughes Feb
+// @Copyright CHughes 2024
+
+
 #include "player.h"
 #include <iostream>
 #include <string>
@@ -28,7 +29,7 @@ void GameSequence(Player &player1, Player &computer) {
     }
     cout<<endl;
     Sleep(250);
-    //FIXME looping
+
 
     while (ScoreTracker.GetPlayerScore() != (roundsNum + 1) / 2 ||
            ScoreTracker.GetCompScore() != (roundsNum + 1) / 2) {

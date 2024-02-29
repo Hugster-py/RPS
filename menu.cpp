@@ -89,7 +89,7 @@ void startMenu(Player &player1, Player &computer) {
         if (choice == 2) {
             player1.printAllStats();
             char answer;
-            cout << "Show Computer Stats? Y or N" << endl;
+            cout << "Show" <<computer.GetName()<<" Stats? Y or N" << endl;
             cin >> answer;
             if (answer == 'y' || answer == 'Y') {
                 computer.printAllStats();

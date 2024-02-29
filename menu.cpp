@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <synchapi.h>
 #include "menu.h"
 
 using namespace std;
@@ -54,10 +53,8 @@ void NewPlayerMenu(Player &player1) {
             b = 0;
         }
         cout<<endl;
-        cout<<"Uploading..."<<endl;
-        Sleep(500);
+
         if(b == 1) {
-            cout<<"Success!"<<endl;
             player1.SetStats(inFS);
             cout << "1. Show Stats of Previous Save" << endl;
             cout << "2. Continue" << endl;
@@ -144,10 +141,7 @@ void PlayerSetting(Player &player1, Player &computer){
             return;
         }
         else{
-            cout<<"Clearing "<<player1.GetName()<<" Stats"<<endl;
             player1.ClearStats();
-            cout<<"..."<<endl;
-            Sleep(500);
             cout<<"Stats cleared!"<<endl;
             return;
         }
@@ -165,14 +159,11 @@ void PlayerSetting(Player &player1, Player &computer){
 void SaveCharacter(Player &player1) {
     int choice;
     ofstream outFS;
-
     cout << "Save Player? Press 1 for yes." << endl;
     cout << "Choice: ";
     cin >> choice;
     cout<<endl;
     if (choice == 1) {
-        cout<<"Saving..."<<endl;
-        Sleep(500);
         string filename = player1.GetName() + ".txt";
         outFS.open(filename);
         outFS << "11011011-RPS" << endl;

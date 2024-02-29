@@ -12,7 +12,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <synchapi.h>
 
 void NewPlayerMenu(Player &player1);
 void startMenu(Player &player1, Player &computer);

@@ -70,7 +70,7 @@ void GameSequence(Player &player1, Player &computer) {
             player1.SetWins();
             computer.SetLosses();
             cout<<endl;
-            cout << "Player wins game!" << endl;
+            cout << player1.GetName()<<" wins game!" << endl;
             break;
         }
         if (ScoreTracker.GetCompScore() == (roundsNum + 1) / 2) {

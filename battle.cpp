@@ -6,7 +6,6 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <synchapi.h>
 #include "battle.h"
 
 using namespace std;
@@ -28,7 +27,7 @@ void GameSequence(Player &player1, Player &computer) {
         cin >> roundsNum;
     }
     cout<<endl;
-    Sleep(250);
+
 
 
     while (ScoreTracker.GetPlayerScore() != (roundsNum + 1) / 2 ||
@@ -71,7 +70,6 @@ void GameSequence(Player &player1, Player &computer) {
             computer.SetLosses();
             cout<<endl;
             cout << "Player wins game!" << endl;
-            Sleep(1000);
             break;
         }
         if (ScoreTracker.GetCompScore() == (roundsNum + 1) / 2) {
@@ -79,11 +77,9 @@ void GameSequence(Player &player1, Player &computer) {
             computer.SetWins();
             cout<<endl;
             cout << "Computer wins game!" << endl;
-            Sleep(1000);
             break;
         }
 
-        Sleep(750);
         cout<<endl;
         //win stats to track through the game
         cout << player1.GetName()<<" - " << ScoreTracker.GetPlayerScore() << " | "<<computer.GetName()<<" - "

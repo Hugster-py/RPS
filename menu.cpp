@@ -60,10 +60,12 @@ void NewPlayerMenu(Player &player1) {
         if(choice == "1") {
             cout << "You chose to create a new player!" << endl;
             PlayerCreation(player1);
+            return;
         }
         else if(choice == "2") {
             cout << "You chose to upload a previous save!" << endl;
             FilePlayerCreation(player1);
+            return;
         }
         else{
                 cout<<"Error, please try again."<<endl;

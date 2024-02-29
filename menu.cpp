@@ -89,7 +89,7 @@ void startMenu(Player &player1, Player &computer) {
         if (choice == 2) {
             player1.printAllStats();
             char answer;
-            cout << "Show Computer Stats? Y or N" << endl;
+            cout << "Show" <<computer.GetName()<<" Stats? Y or N" << endl;
             cin >> answer;
             if (answer == 'y' || answer == 'Y') {
                 computer.printAllStats();
@@ -166,7 +166,6 @@ void SaveCharacter(Player &player1) {
     if (choice == 1) {
         string filename = player1.GetName() + ".txt";
         outFS.open(filename);
-        outFS << "11011011-RPS" << endl;
         player1.PrintAllStatsFile(outFS);
         cout<<"Character Saved!"<<endl;
     }

@@ -67,16 +67,16 @@ void GameSequence(Player &player1, Player &computer) {
 
         //overall win monitoring
         if (ScoreTracker.GetPlayerScore() == (roundsNum + 1) / 2) {
-            player1.SetWins(0);
-            computer.SetLosses(0);
+            player1.SetWins();
+            computer.SetLosses();
             cout<<endl;
             cout << "Player wins game!" << endl;
             Sleep(1000);
             break;
         }
         if (ScoreTracker.GetCompScore() == (roundsNum + 1) / 2) {
-            player1.SetLosses(0);
-            computer.SetWins(0);
+            player1.SetLosses();
+            computer.SetWins();
             cout<<endl;
             cout << "Computer wins game!" << endl;
             Sleep(1000);

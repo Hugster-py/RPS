@@ -159,7 +159,6 @@ void PlayerSetting(Player &player1, Player &computer){
 void SaveCharacter(Player &player1) {
     int choice;
     ofstream outFS;
-
     cout << "Save Player? Press 1 for yes." << endl;
     cout << "Choice: ";
     cin >> choice;

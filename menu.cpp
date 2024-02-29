@@ -166,7 +166,6 @@ void SaveCharacter(Player &player1) {
     if (choice == 1) {
         string filename = player1.GetName() + ".txt";
         outFS.open(filename);
-        outFS << "11011011-RPS" << endl;
         player1.PrintAllStatsFile(outFS);
         cout<<"Character Saved!"<<endl;
     }

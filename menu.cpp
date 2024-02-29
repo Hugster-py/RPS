@@ -49,21 +49,23 @@ void FilePlayerCreation(Player&player1){
 
 
 void NewPlayerMenu(Player &player1) {
-    int choice;
-    while(choice != 1 || choice != 2) {
+    string choice;
+    while(choice != "1" || choice != "2") {
         cout << "1. Create New Player" << endl;
         cout << "2. Upload Previous Player" << endl;
         cout << "Choice: ";
         cin >> choice;
+
         cout << endl;
-        switch(choice) {
-            case 1:
-                cout << "You chose to create a new player!" << endl;
-                PlayerCreation(player1);
-            case 2:
-                cout << "You chose to upload a previous save!" << endl;
-                FilePlayerCreation(player1);
-            default:
+        if(choice == "1") {
+            cout << "You chose to create a new player!" << endl;
+            PlayerCreation(player1);
+        }
+        else if(choice == "2") {
+            cout << "You chose to upload a previous save!" << endl;
+            FilePlayerCreation(player1);
+        }
+        else{
                 cout<<"Error, please try again."<<endl;
         }
     }

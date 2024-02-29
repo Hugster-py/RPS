@@ -53,10 +53,10 @@ void GameSequence(Player &player1, Player &computer) {
         }
 
 
-        if (score == 0) {
+        if (score == 1) {
             ScoreTracker.SetCompScore();
             cout << "Computer wins round!" << endl;
-        } else if (score == 1) {
+        } else if (score == 0) {
             ScoreTracker.SetPlayerScore();
             cout << "Player wins round!" << endl;
         }

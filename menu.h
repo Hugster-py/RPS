@@ -17,5 +17,7 @@ void NewPlayerMenu(Player &player1);
 void startMenu(Player &player1, Player &computer);
 void SaveCharacter(Player &player1);
 void PlayerSetting(Player &player1, Player &computer);
+void FilePlayerCreation(Player&player1);
+void PlayerCreation(Player&player1);
 
 #endif

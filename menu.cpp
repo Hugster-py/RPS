@@ -10,63 +10,65 @@
 
 using namespace std;
 
+void PlayerCreation(Player&player1){
+    cout << "Please enter username: ";
+    string name;
+    cin >> name;
+    player1.SetName(name);
+    cout << endl;
+}
 
-void NewPlayerMenu(Player &player1) {
+void FilePlayerCreation(Player&player1){
     ifstream inFS;
-    int choice = 0;
-    while(choice != 1 || choice != 2) {
-        cout << "1. Create New Player" << endl;
-        cout << "2. Upload Previous Player" << endl;
-        cout<<"Choice: ";
-        cin>>choice;
-        cout<<endl;
-        if(choice == 1 || choice ==2){
-            break;
-        }
-        if(choice != 1){
-            if(choice !=2){
-                cout<<"Invalid Choice. Try Again."<<endl;
-            }
-        }
+    int choice;
+    cout << "Please paste full path of save file!" << endl;
+    cout << "File Name: ";
+    string filename;
+    cin >> filename;
+    inFS.open(filename);
+    int b = 1;
+    if (!inFS.is_open()) {
+        cout << "Error: File Not Found. Try again." << endl;
+        cout << endl;
+        NewPlayerMenu(player1);
+        b = 0;
     }
-    if(choice == 1){
-        cout<<"You chose to create a new player!"<<endl;
-        cout<<"Please enter username: ";
-        string name;
-        cin>>name;
-        player1.SetName(name);
-        cout<<endl;
-    }
-    else if(choice == 2){
-        cout<<"You chose to upload a previous save!"<<endl;
-        cout<<"Please paste full path of save file!"<<endl;
-        cout<<"File Name: ";
-        string filename;
-        cin>>filename;
-        inFS.open(filename);
-        int b = 1;
-        if(!inFS.is_open()){
-            cout<<"Error: File Not Found. Try again."<<endl;
-            cout<<endl;
-            choice = 0;
-            NewPlayerMenu(player1);
-            b = 0;
-        }
-        cout<<endl;
-
-        if(b == 1) {
-            player1.SetStats(inFS);
-            cout << "1. Show Stats of Previous Save" << endl;
-            cout << "2. Continue" << endl;
-            cout << "Choice: ";
-            cin >> choice;
-            if (choice == 1) {
-                player1.printAllStats();
-                cout<<endl;
-            }
+    cout << endl;
+    if (b == 1) {
+        player1.SetStats(inFS);
+        cout << "1. Show Stats of Previous Save" << endl;
+        cout << "2. Continue" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+        if (choice == 1) {
+            player1.printAllStats();
+            cout << endl;
         }
     }
 }
+
+
+void NewPlayerMenu(Player &player1) {
+    int choice;
+    while(choice != 1 || choice != 2) {
+        cout << "1. Create New Player" << endl;
+        cout << "2. Upload Previous Player" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+        cout << endl;
+        switch(choice) {
+            case 1:
+                cout << "You chose to create a new player!" << endl;
+                PlayerCreation(player1);
+            case 2:
+                cout << "You chose to upload a previous save!" << endl;
+                FilePlayerCreation(player1);
+            default:
+                cout<<"Error, please try again."<<endl;
+        }
+    }
+    }
+
 
 
 void startMenu(Player &player1, Player &computer) {

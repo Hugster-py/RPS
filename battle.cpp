@@ -55,7 +55,8 @@ void GameSequence(Player &player1, Player &computer) {
 
         if (score == 1) {
             ScoreTracker.SetCompScore();
-            cout << "Computer wins round!" << endl;
+            cout << computer.GetName()<<" wins round!" << endl;
+
         } else if (score == 0) {
             ScoreTracker.SetPlayerScore();
             cout << "Player wins round!" << endl;
@@ -76,7 +77,7 @@ void GameSequence(Player &player1, Player &computer) {
             player1.SetLosses();
             computer.SetWins();
             cout<<endl;
-            cout << "Computer wins game!" << endl;
+            cout << computer.GetName()<<" wins game!" << endl;
             break;
         }
 
@@ -112,7 +113,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetRock();
         computer.SetPaper();
         cout << player1.GetName() << " chose Rock!" << endl;
-        cout << "The Computer chose Paper!" << endl;
+        cout << computer.GetName()<<" chose Paper!" << endl;
         return 1;
     }
     // player rock - comp scissors
@@ -121,7 +122,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetRock();
         computer.SetScissor();
         cout << player1.GetName() << " chose Rock!" << endl;
-        cout << "The Computer chose Scissors!" << endl;
+        cout << computer.GetName()<<" chose Scissors!" << endl;
         return 0;
     }
     //player rock - comp rock
@@ -130,7 +131,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetRock();
         computer.SetRock();
         cout << player1.GetName() << " chose Rock!" << endl;
-        cout << "The Computer chose Rock!" << endl;
+        cout << computer.GetName()<<" chose Rock!" << endl;
         return 2;
     }
     // player paper - comp rock
@@ -139,7 +140,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetPaper();
         computer.SetRock();
         cout << player1.GetName() << " chose Paper!" << endl;
-        cout << "The Computer chose Rock!" << endl;
+        cout << computer.GetName()<<" chose Rock!" << endl;
         return 0;
     }
     // player paper - comp scissors
@@ -148,7 +149,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetPaper();
         computer.SetScissor();
         cout << player1.GetName() << " chose Paper!" << endl;
-        cout << "The Computer chose Scissors!" << endl;
+        cout << computer.GetName()<<" chose Scissors!" << endl;
         return 1;
     }
     // player paper - comp paper
@@ -157,7 +158,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetPaper();
         computer.SetPaper();
         cout << player1.GetName() << " chose Paper!" << endl;
-        cout << "The Computer chose Paper!" << endl;
+        cout << computer.GetName()<<" chose Paper!" << endl;
         return 2;
     }
     // player scissor - comp rock
@@ -166,7 +167,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetScissor();
         computer.SetRock();
         cout << player1.GetName() << " chose Scissors!" << endl;
-        cout << "The Computer chose Rock!" << endl;
+        cout << computer.GetName()<<" chose Rock!" << endl;
         return 1;
     }
     // player scissors - comp paper
@@ -175,7 +176,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetScissor();
         computer.SetPaper();
         cout << player1.GetName() << " chose Scissors!" << endl;
-        cout << "The Computer chose Paper!" << endl;
+        cout << computer.GetName()<<" chose Paper!" << endl;
         return 0;
     }
     // player scissors - comp scissors
@@ -183,7 +184,7 @@ int Battle(Player &player1, int choice, Player &computer) {
         player1.SetScissor();
         computer.SetScissor();
         cout << player1.GetName() << " chose Scissors!" << endl;
-        cout << "The Computer chose Scissors!" << endl;
+        cout << computer.GetName()<<" chose Scissors!" << endl;
         return 2;
     }
 }
